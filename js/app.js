@@ -95,8 +95,15 @@ $(document).ready(function(){
     function updateCounts (){
         var totalItems = $('.item').length;
         var leftItems = $('#list .item').length;
+        var progress = (totalItems - leftItems)/totalItems * 100;
         $('#itemsLeft').text(leftItems);
         $('#totalItems').text(totalItems);
+        $('#itemProgress').css('width', progress + '%').attr('aria-valuenow', progress);
+        if(leftItems === 0){
+            $('#continueButton').show();
+        } else {
+            $('#continueButton').hide();
+        }
     }
 
     var listContent = [];
