@@ -113,6 +113,7 @@ $(document).ready(function(){
     $('#list').html(listContent);
     updateCounts();
 
+    // Moving with sortable
     $('.bucket').sortable({
         connectWith : '.bucket',
         update : function(){
@@ -120,12 +121,32 @@ $(document).ready(function(){
         }
     });
 
-    $('.moveButton').click(function(){
-        var el = $(this);
-        var target = $(this).attr('data-target');
+    // Moving with clicks and arrows
+    function moveToBucket(target){
         var itemtoMove = $('#list .item').first().detach();
         $(target).prepend(itemtoMove);
         updateCounts();
+    }
+
+    $('.moveButton').click(function(){
+        var el = $(this);
+        var target = $(this).attr('data-target');
+        moveToBucket(target);
+    });
+
+    $('body').keyup(function(){
+        // left
+        if ( event.which == 37 ) {
+            moveToBucket('#bucket1');
+        }
+        // down
+        if ( event.which == 40 ) {
+            moveToBucket('#bucket2');
+        }
+        // right
+        if ( event.which == 39 ) {
+            moveToBucket('#bucket3');
+        }
     })
 
 });
