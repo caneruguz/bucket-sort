@@ -89,3 +89,12 @@ var items = [
     {"id" : 87, "content"  : "Situation includes aesthetic stimuli. (e.g., art, music, drama, beauty)"},
     {"id" : 88, "content"  : "Situation is complex."}
 ]
+
+$(document).ready(function(){
+    var listContent = [];
+    items.forEach(function(item){
+        listContent += '<div class="item alert alert-info" id="item'+item.id+'">' + item.content + '</div>';
+    })
+    $('#list').html(listContent);
+
+});

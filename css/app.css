@@ -102,3 +102,9 @@
         transform: rotate(450deg);
     }
 }
+
+
+#list {
+    height: 250px;
+    overflow: auto;
+}
