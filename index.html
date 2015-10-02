@@ -36,41 +36,57 @@
     </div>
 
     <div class="row m-t-lg">
-        <div class="col-md-12">
+        <div class="col-md-6 col-md-offset-3">
             <h2 class="text-center">List</h2>
-            <div class="well text-center" id="list">
+            <div class="well bucket text-center" id="list">
                 <svg class="spinner" width="30px" height="30px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
                     <circle class="path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle>
                 </svg>
+            </div>
+            <div class="counter">
+                <div class="p-lg text-center">
+                    <span id="itemsLeft"></span> out of <span id="totalItems"></span> left
+                </div>
             </div>
     </div>
 
     <div class="row m-t-lg">
         <div class="col-md-4 text-center">
-            <button class="btn btn-lg btn-default"><span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span></button>
+            <button class="btn btn-lg btn-default moveButton" data-target="#bucket1">
+                <span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span>
+                <div class="visible-xs">Move to Uncharacteristic</div>
+            </button>
         </div>
         <div class="col-md-4 text-center">
-            <button class="btn btn-lg btn-default"><span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span></button>
+            <button class="btn btn-lg btn-default moveButton" data-target="#bucket2">
+                <span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span>
+                <div class="visible-xs">Move to Neutral  </div>
+
+            </button>
         </div>
         <div class="col-md-4 text-center">
-            <button class="btn btn-lg btn-default"><span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span></button>
+            <button class="btn btn-lg btn-default moveButton" data-target="#bucket3">
+                <span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span>
+                <div class="visible-xs">Move to Characteristic</div>
+
+            </button>
         </div>
     </div>
     <div class="row m-t-lg">
         <div class="col-md-4">
             <h2 class="text-center">Uncharacteristic</h2>
-            <div class="well" id="bucket1">
+            <div class="well bucket" id="bucket1">
 
             </div>
         </div>
         <div class="col-md-4">
             <h2 class="text-center">Neutral</h2>
-            <div class="well" id="bucket2">
+            <div class="well bucket" id="bucket2">
             </div>
         </div>
         <div class="col-md-4">
             <h2 class="text-center">Characteristic</h2>
-            <div class="well" id="bucket3">
+            <div class="well bucket" id="bucket3">
             </div>
         </div>
     </div><!--/row-->
