@@ -104,7 +104,25 @@
 }
 
 
-#list {
-    height: 250px;
+.bucket {
+    height: 450px;
     overflow: auto;
+}
+
+#list {
+    height: 80px;
+    overflow:hidden;
+    margin-bottom: 0;
+}
+
+#itemsLeft, #totalItems {
+    font-weight: bold;
+}
+
+.counter {
+    font-size: 15px;
+}
+
+.item {
+    cursor: move;
 }
