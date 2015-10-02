@@ -91,10 +91,34 @@ var items = [
 ]
 
 $(document).ready(function(){
+
+    function updateCounts (){
+        var totalItems = $('.item').length;
+        var leftItems = $('#list .item').length;
+        $('#itemsLeft').text(leftItems);
+        $('#totalItems').text(totalItems);
+    }
+
     var listContent = [];
     items.forEach(function(item){
         listContent += '<div class="item alert alert-info" id="item'+item.id+'">' + item.content + '</div>';
     })
     $('#list').html(listContent);
+    updateCounts();
+
+    $('.bucket').sortable({
+        connectWith : '.bucket',
+        update : function(){
+            updateCounts();
+        }
+    });
+
+    $('.moveButton').click(function(){
+        var el = $(this);
+        var target = $(this).attr('data-target');
+        var itemtoMove = $('#list .item').first().detach();
+        $(target).prepend(itemtoMove);
+        updateCounts();
+    })
 
 });
