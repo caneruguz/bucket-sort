@@ -126,3 +126,11 @@
 .item {
     cursor: move;
 }
+
+#continueButton {
+    display: none;
+}
+
+.progress {
+    height: 6px
+}
