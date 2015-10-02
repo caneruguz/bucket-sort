@@ -90,6 +90,12 @@ var items = [
     {"id" : 88, "content"  : "Situation is complex."}
 ]
 
+/**
+ *  This implementation uses an inefficient method of data handling to illustrate the ui.
+ *  A wrapper viewmodel can be used to make this more efficient.
+ *  For example Knockout, mithril etc.
+ */
+
 $(document).ready(function(){
 
     function updateCounts (){
@@ -106,12 +112,21 @@ $(document).ready(function(){
         }
     }
 
-    var listContent = [];
-    items.forEach(function(item){
-        listContent += '<div class="item alert alert-info" id="item'+item.id+'">' + item.content + '</div>';
-    })
-    $('#list').html(listContent);
-    updateCounts();
+    // Moving function
+    function moveToBucket(target){
+        var itemtoMove = $('#list .item').first().detach();
+        $(target).prepend(itemtoMove);
+        updateCounts();
+    }
+
+    function init () {
+        var listContent = [];
+        items.forEach(function(item){
+            listContent += '<div class="item alert alert-info" data-id="'+item.id+'">' + item.content + '</div>';
+        })
+        $('#list').html(listContent);
+        updateCounts();
+    }
 
     // Moving with sortable
     $('.bucket').sortable({
@@ -121,19 +136,14 @@ $(document).ready(function(){
         }
     });
 
-    // Moving with clicks and arrows
-    function moveToBucket(target){
-        var itemtoMove = $('#list .item').first().detach();
-        $(target).prepend(itemtoMove);
-        updateCounts();
-    }
-
+    // Move with clicks
     $('.moveButton').click(function(){
         var el = $(this);
         var target = $(this).attr('data-target');
         moveToBucket(target);
     });
 
+    // Move with arrows
     $('body').keyup(function(){
         // left
         if ( event.which == 37 ) {
@@ -147,6 +157,25 @@ $(document).ready(function(){
         if ( event.which == 39 ) {
             moveToBucket('#bucket3');
         }
+    });
+
+    // Output data in continue
+    $('#continueButton').click(function(){
+        var buckets  = {
+            1 : [],
+            2 : [],
+            3 : []
+        };
+        var bucketOutput = "";
+
+        for(var i = 1; i < 4; i++){
+            $('#bucket' + i + ' .item').each(function(){
+                buckets[i].push($(this).attr('data-id'));
+            });
+            bucketOutput += '<div>Bucket ' + i + ': ' + buckets[i].toString() + '</div>';
+        }
+        $('.bucket-wrap').html(bucketOutput);
     })
 
+    init();
 });
