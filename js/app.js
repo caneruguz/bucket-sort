@@ -1,3 +1,9 @@
+var Class = {};
+something = 'wrong';
+
+var noPunc = {}
+
+
 var items = [
     {"id" : 0 , "content"  : "Situation is playful."},
     {"id" : 1 , "content"  : "Social interaction is possible."},
