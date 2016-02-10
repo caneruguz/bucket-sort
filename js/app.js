@@ -1,3 +1,9 @@
+var Class = {};
+something = 'wrong';
+
+var noPunc = {}
+
+
 var items = [
     {"id" : 0 , "content"  : "Situation is playful."},
     {"id" : 1 , "content"  : "Social interaction is possible."},
@@ -161,6 +167,7 @@ $(document).ready(function(){
 
     // Output data in continue
     $('#continueButton').click(function(){
+        var i;
         var buckets  = {
             1 : [],
             2 : [],
@@ -168,7 +175,7 @@ $(document).ready(function(){
         };
         var bucketOutput = "";
 
-        for(var i = 1; i < 4; i++){
+        for(i = 1; i < 4; i++){
             $('#bucket' + i + ' .item').each(function(){
                 buckets[i].push($(this).attr('data-id'));
             });
